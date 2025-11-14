@@ -1,10 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Threading;
+﻿using System.Runtime.InteropServices;
 
 class Program
 {
-    // Importar funciones de la API de Windows //
     [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
     public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
 
@@ -18,13 +15,11 @@ class Program
 
         while (true)
         {
-            // Simular clic izquierdo
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
             Console.WriteLine("Click realizado a las: " + DateTime.Now);
 
-            // Esperar 90 segundos
             Thread.Sleep(90000);
         }
     }
